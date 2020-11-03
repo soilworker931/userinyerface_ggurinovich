@@ -1,6 +1,5 @@
-package forms;
+package framework.forms;
 
-import configurations.Environment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -8,14 +7,9 @@ public class FirstPage {
 
     private WebDriver driver;
     private String requiredText = "Hi and welcome to User Inyerface";
-    private Environment environment = new Environment();
 
     public FirstPage(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public void open() {
-        driver.get(environment.getCurrentEnvironment());
     }
 
     public boolean isPageOpened() {
