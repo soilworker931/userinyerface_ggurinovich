@@ -33,7 +33,7 @@ public class Utility {
         return generatedText;
     }
 
-    public static void uploadFile(){
+    public void uploadFile(){
         StringSelection stringSelection = new StringSelection(absolutePath);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(stringSelection, stringSelection);
