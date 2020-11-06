@@ -14,12 +14,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.PropertiesRead;
+import utils.Utility;
 
 public class UserInyerface {
+    private Utility utility = new Utility();
     private static final String PAGE = PropertiesRead.readFromFrameworkConfig("page");
-    private final BaseForm firstPage = new FirstPage(By.className("start__paragraph"), "required text is displayed");
+    private final String passwordAndName = utility.textGeneration(15);
     private final BaseElement hereButton = new Button(By.className("start__link"), "clicking HERE button");
-    private final BaseForm firstCard = new FirstCard(By.className("page-indicator"), "required text is displayed");
     private final TextBox inputPassword = new TextBox(By.xpath("//input[@placeholder='Choose Password']"), "input password");
     private final TextBox inputNickname = new TextBox(By.xpath("//input[@placeholder='Your email']"), "input nickname");
     private final TextBox inputDomain = new TextBox(By.xpath("//input[@placeholder='Domain']"), "input domain");
@@ -42,43 +43,45 @@ public class UserInyerface {
 
     @Test
     public void checkingTwoFirstCards() {
+        FirstPage firstPage = new FirstPage(By.className("start__paragraph"), "required text is displayed");
         Assert.assertTrue(firstPage.isPageOpened("Hi and welcome to User Inyerface"), "Incorrect page was opened");
         hereButton.click();
+        FirstCard firstCard = new FirstCard(By.className("page-indicator"), "required text is displayed");
         Assert.assertTrue(firstCard.isPageOpened("1 / 4"), "incorrect page was opened");
-        inputPassword.insertPassword();
-        inputNickname.insertEmail();
-        inputDomain.insertDomain();
-        inputOrgCode.insertOrgCode(By.className("dropdown__list-item"));
-        termsAccept.click();
-        nextButton.click();
-        Assert.assertTrue(secondCard.isPageOpened("2 / 4"), "incorrect page was opened");
-        hobbiesChoose.chooseDifferentHobbies();
-        uploadRequiredFile.uploadFileForAvatar();
+        firstCard.insertPassword(passwordAndName);
+//        inputNickname.insertEmail();
+//        inputDomain.insertDomain();
+//        inputOrgCode.insertOrgCode(By.className("dropdown__list-item"));
+//        termsAccept.click();
+//        nextButton.click();
+//        Assert.assertTrue(secondCard.isPageOpened("2 / 4"), "incorrect page was opened");
+//        hobbiesChoose.chooseDifferentHobbies();
+//        uploadRequiredFile.uploadFileForAvatar();
     }
 
-    @Test
-    public void checkHelpScreenIsHidden() {
-        Assert.assertTrue(firstPage.isPageOpened("Hi and welcome to User Inyerface"), "Incorrect page was opened");
-        hereButton.click();
-        helpButton.click();
-        Assert.assertFalse(helpButton.webElementisDisplayed());
-
-    }
-
-    @Test
-    public void CheckCookiesClosed() {
-        Assert.assertTrue(firstPage.isPageOpened("Hi and welcome to User Inyerface"), "Incorrect page was opened");
-        hereButton.click();
-        cookies.closeCookies();
-        Assert.assertFalse(cookies.isCookiesClosed());
-    }
-
-    @Test
-    public void CheckDefaultTimerValue() {
-        Assert.assertTrue(firstPage.isPageOpened("Hi and welcome to User Inyerface"), "Incorrect page was opened");
-        hereButton.click();
-        Assert.assertTrue(timer.checkText("00:00:00"), "incorrect timer starting value is displayed");
-    }
+//    @Test
+//    public void checkHelpScreenIsHidden() {
+//        Assert.assertTrue(firstPage.isPageOpened("Hi and welcome to User Inyerface"), "Incorrect page was opened");
+//        hereButton.click();
+//        helpButton.click();
+//        Assert.assertFalse(helpButton.webElementisDisplayed());
+//
+//    }
+//
+//    @Test
+//    public void CheckCookiesClosed() {
+//        Assert.assertTrue(firstPage.isPageOpened("Hi and welcome to User Inyerface"), "Incorrect page was opened");
+//        hereButton.click();
+//        cookies.closeCookies();
+//        Assert.assertFalse(cookies.isCookiesClosed());
+//    }
+//
+//    @Test
+//    public void CheckDefaultTimerValue() {
+//        Assert.assertTrue(firstPage.isPageOpened("Hi and welcome to User Inyerface"), "Incorrect page was opened");
+//        hereButton.click();
+//        Assert.assertTrue(timer.checkText("00:00:00"), "incorrect timer starting value is displayed");
+//    }
 
     @AfterMethod
     public void close() {

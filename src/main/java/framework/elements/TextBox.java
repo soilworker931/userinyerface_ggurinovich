@@ -15,18 +15,23 @@ public class TextBox extends BaseElement {
         super(locator, name);
     }
 
-    public void insertPassword() {
-        Browser.getBrowser().findElement(elementLocator).clear();
-        Browser.getBrowser().findElement(elementLocator).sendKeys(passwordAndName);
-    }
+//    public void insertPassword() {
+//        Browser.getBrowser().findElement(elementLocator).clear();
+//        Browser.getBrowser().findElement(elementLocator).sendKeys(passwordAndName);
+//    }
+//
+//        public void insertEmail() {
+//        Browser.getBrowser().findElement(elementLocator).clear();
+//        Browser.getBrowser().findElement(elementLocator).sendKeys(passwordAndName);
+//    }
+//
+//    public void insertDomain() {
+//        Browser.getBrowser().findElement(elementLocator).clear();
+//        Browser.getBrowser().findElement(elementLocator).sendKeys("mail");
+//    }
 
-        public void insertEmail() {
+    public void clearAndType(String value) {
         Browser.getBrowser().findElement(elementLocator).clear();
-        Browser.getBrowser().findElement(elementLocator).sendKeys(passwordAndName);
-    }
-
-    public void insertDomain() {
-        Browser.getBrowser().findElement(elementLocator).clear();
-        Browser.getBrowser().findElement(elementLocator).sendKeys("mail");
+        Browser.getBrowser().findElement(elementLocator).sendKeys(value);
     }
 }
