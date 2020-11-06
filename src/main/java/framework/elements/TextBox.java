@@ -7,9 +7,9 @@ import utils.Utility;
 
 public class TextBox extends BaseElement {
 
-    private Utility utility = new Utility();
-    private final int stringLength = 15;
-    private final String passwordAndName = utility.textGeneration(stringLength);
+//    private Utility utility = new Utility();
+//    private final int stringLength = 15;
+//    private final String passwordAndName = utility.textGeneration(stringLength);
 
     public TextBox(By locator, String name) {
         super(locator, name);

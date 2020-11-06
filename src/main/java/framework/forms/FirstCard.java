@@ -9,8 +9,8 @@ public class FirstCard extends BaseForm {
 
     private TextBox passwordTbx = new TextBox(By.xpath("//input[@placeholder='Choose Password']"), "Password");
 
-    public FirstCard(By locator, String name) {
-        super(locator, name);
+    public FirstCard() {
+        super(By.xpath("//div[@class='page-indicator' and contains(text(),'1 / 4')]"), "Hi and welcome to User Inyerface");
     }
 
     public void insertPassword(String password) {

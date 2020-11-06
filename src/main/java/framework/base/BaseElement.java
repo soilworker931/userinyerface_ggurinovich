@@ -26,7 +26,7 @@ public abstract class BaseElement {
     }
 
     public boolean isDisplayed(String requiredText) {
-        return getElement().getText().contains(requiredText);
+        return getElement().getSize()>0;
     }
 
 

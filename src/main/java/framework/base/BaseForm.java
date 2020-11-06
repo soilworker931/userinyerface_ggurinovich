@@ -13,8 +13,8 @@ public abstract class BaseForm {
         this.name = name;
     }
 
-    public boolean isPageOpened(String requiredText) {
-        return new Label(locator, name).isDisplayed(requiredText);
+    public boolean isPageOpened() {
+        return new Label(locator, name).isDisplayed();
     }
 
     public boolean checkText(String requiredText) {

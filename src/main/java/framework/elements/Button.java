@@ -11,9 +11,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Button extends BaseElement {
 
-    private final int hobbiesQuantity = 3;
-    private int timeout = 5;
-    private Utility utility = new Utility();
+//    private final int hobbiesQuantity = 3;
+//    private int timeout = 5;
+//    private Utility utility = new Utility();
 
     public Button(By locator, String name) {
         super(locator, name);

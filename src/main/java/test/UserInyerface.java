@@ -32,7 +32,7 @@ public class UserInyerface {
     private final Button uploadRequiredFile = new Button(By.className("avatar-and-interests__upload-button"), "upload file");
     private final BaseElement helpButton = new Button(By.className("discrete"), "clicking hide button to hide popup");
     private final Button cookies = new Button(By.xpath("//button[@class='button button--solid button--transparent']"), "closing cookies");
-    private final BaseForm timer = new FirstCard(By.xpath("//div[@class = 'timer timer--white timer--center']"), "check correct timer starting value");
+//    private final BaseForm timer = new FirstCard(By.xpath("//div[@class = 'timer timer--white timer--center']"), "check correct timer starting value");
 
     @BeforeMethod
     public void start() {
@@ -44,11 +44,11 @@ public class UserInyerface {
     @Test
     public void checkingTwoFirstCards() {
         FirstPage firstPage = new FirstPage(By.className("start__paragraph"), "required text is displayed");
-        Assert.assertTrue(firstPage.isPageOpened("Hi and welcome to User Inyerface"), "Incorrect page was opened");
+//        Assert.assertTrue(firstPage.isPageOpened("Hi and welcome to User Inyerface"), "Incorrect page was opened");
         hereButton.click();
-        FirstCard firstCard = new FirstCard(By.className("page-indicator"), "required text is displayed");
-        Assert.assertTrue(firstCard.isPageOpened("1 / 4"), "incorrect page was opened");
-        firstCard.insertPassword(passwordAndName);
+        FirstCard firstCard = new FirstCard();
+//        Assert.assertTrue(firstCard.isPageOpened("1 / 4"), "incorrect page was opened");
+//        firstCard.insertPassword(passwordAndName);
 //        inputNickname.insertEmail();
 //        inputDomain.insertDomain();
 //        inputOrgCode.insertOrgCode(By.className("dropdown__list-item"));
