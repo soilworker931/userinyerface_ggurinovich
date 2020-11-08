@@ -1,6 +1,7 @@
 package framework.browser;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,6 +12,7 @@ import utils.PropertiesRead;
 import java.util.HashMap;
 
 public class BrowserFactory {
+    static final Logger log = Logger.getLogger(BrowserFactory.class);
 
     public static WebDriver getBrowser(String browserName) {
         String language = PropertiesRead.readFromFrameworkConfig("language");
@@ -18,9 +20,11 @@ public class BrowserFactory {
         WebDriver driver = null;
         switch (browserName) {
             case "chrome":
+                log.info("Chosen browser is chrome");
                 driver = getChromeInstance(language);
                 break;
             case "firefox":
+                log.info("Chosen browser is firefox");
                 driver = getFirefoxInstance(language);
         }
         return driver;
