@@ -4,7 +4,6 @@ import framework.elements.Label;
 import org.openqa.selenium.By;
 
 public abstract class BaseForm {
-
     private final By locator;
     private final String name;
 

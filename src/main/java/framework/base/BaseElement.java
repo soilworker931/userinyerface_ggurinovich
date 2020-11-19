@@ -6,15 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public abstract class BaseElement {
-
     protected By elementLocator;
     protected String elementName;
     static final Logger log = Logger.getLogger(BaseElement.class);
-
-    private final int timeout = 10;
 
     public BaseElement(By locator, String name) {
         this.elementLocator = locator;
@@ -36,14 +32,12 @@ public abstract class BaseElement {
         return Browser.getBrowser().findElements(this.elementLocator);
     }
 
-
     public boolean isDisplayed() {
         log.info(this.elementName + "check");
         return getElements().size() > 0;
     }
 
-
-    public boolean webElementisDisplayed() {
+    public boolean webElementIsDisplayed() {
         log.info(this.elementName + "check");
         Browser.setImplicitlyWait();
         return getElement().isDisplayed();

@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 
 public class TextBox extends BaseElement {
     static final Logger log = Logger.getLogger(TextBox.class);
-
     public TextBox(By locator, String name) {
         super(locator, name);
     }

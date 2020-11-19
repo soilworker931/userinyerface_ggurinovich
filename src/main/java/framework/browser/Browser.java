@@ -10,7 +10,6 @@ public abstract class Browser {
     private static WebDriver driver;
     private static final int TIMEOUT = Integer.parseInt(PropertiesRead.readFromFrameworkConfig("timeout"));
     private static final String browserName = PropertiesRead.readFromFrameworkConfig("browser");
-
     static final Logger log = Logger.getLogger(Browser.class);
 
     public static WebDriver getBrowser() {

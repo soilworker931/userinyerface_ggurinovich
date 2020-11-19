@@ -9,13 +9,17 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.PropertiesRead;
-import utils.Utility;
+import utils.RobotUtils;
+import utils.StringUtils;
+
+import java.io.File;
 
 public class UserInyerface {
-    private Utility utility = new Utility();
+    private StringUtils utility = new StringUtils();
     private final String nicknameAndPassword = utility.textGeneration(15);
     private final String domainName = "mail";
     private static final String PAGE = PropertiesRead.readFromFrameworkConfig("page");
+    private static File file = new File(PropertiesRead.readFromDataConfig("file"));
 
     @BeforeMethod
     public void start() {
@@ -29,7 +33,6 @@ public class UserInyerface {
         FirstPage firstPage = new FirstPage();
         Assert.assertTrue(firstPage.pageIsDisplayed(), "incorrect page was displayed");
         firstPage.clickHereButton();
-
         FirstCard firstCard = new FirstCard();
         Assert.assertTrue(firstCard.pageIsDisplayed(), "incorrect page was opened");
         firstCard.insertPassword(nicknameAndPassword);
@@ -38,11 +41,11 @@ public class UserInyerface {
         firstCard.insertOrgCode();
         firstCard.acceptTermsButtonClick();
         firstCard.moveToTheSecondCard();
-
         SecondCard secondCard = new SecondCard();
         Assert.assertTrue(secondCard.pageIsDisplayed());
-        secondCard.chooseThreeDifferentHobbies();
-        secondCard.uploadFileForAvatar();
+        secondCard.chooseDifferentHobbies();
+        secondCard.browseAvatarButton();
+        RobotUtils.uploadFile(file);
     }
 
     @Test
@@ -50,7 +53,6 @@ public class UserInyerface {
         FirstPage firstPage = new FirstPage();
         Assert.assertTrue(firstPage.pageIsDisplayed(), "incorrect page was displayed");
         firstPage.clickHereButton();
-
         FirstCard firstCard = new FirstCard();
         firstCard.hideHelpButton();
         Assert.assertFalse(firstCard.helpButtonIsHidden());
@@ -61,7 +63,6 @@ public class UserInyerface {
         FirstPage firstPage = new FirstPage();
         Assert.assertTrue(firstPage.pageIsDisplayed(), "incorrect page was displayed");
         firstPage.clickHereButton();
-
         FirstCard firstCard = new FirstCard();
         firstCard.closeCookies();
         Assert.assertFalse(firstCard.isCookiesClosed());
@@ -72,7 +73,6 @@ public class UserInyerface {
         FirstPage firstPage = new FirstPage();
         Assert.assertTrue(firstPage.pageIsDisplayed(), "incorrect page was displayed");
         firstPage.clickHereButton();
-
         FirstCard firstCard = new FirstCard();
         Assert.assertTrue(firstCard.timerShowsCorrectValue("00:00:00"), "incorrect timer starting value is displayed");
     }

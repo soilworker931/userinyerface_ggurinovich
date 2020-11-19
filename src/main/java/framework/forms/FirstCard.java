@@ -13,7 +13,6 @@ import java.util.List;
 
 public class FirstCard extends BaseForm {
     static final Logger log = Logger.getLogger(FirstCard.class);
-
     private TextBox passwordTbx = new TextBox(By.xpath("//input[@placeholder='Choose Password']"), "password");
     private TextBox nickNameTbx = new TextBox(By.xpath("//input[@placeholder='Your email']"), "nickname");
     private TextBox domainTbx = new TextBox(By.xpath("//input[@placeholder='Domain']"), "domain");
@@ -50,7 +49,7 @@ public class FirstCard extends BaseForm {
         dropDownListOrgCodes.click();
         List<WebElement> orgCodeLists = orgCodes.getElements();
         int randomOrgCode = (int) (Math.random() * orgCodeLists.size());
-        Browser.getBrowser().findElement(By.xpath("(//div[@class='dropdown__list-item'])["+ randomOrgCode +"]")).click();
+        Browser.getBrowser().findElement(By.xpath(String.format("(//div[@class='dropdown__list-item'])[%d]",randomOrgCode))).click();
     }
 
     public void acceptTermsButtonClick() {
@@ -70,7 +69,7 @@ public class FirstCard extends BaseForm {
 
     public boolean helpButtonIsHidden() {
         log.info("help button is hidden check");
-        return helpButton.webElementisDisplayed();
+        return helpButton.webElementIsDisplayed();
     }
 
     public void closeCookies() {
