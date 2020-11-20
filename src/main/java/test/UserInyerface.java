@@ -15,11 +15,10 @@ import utils.StringUtils;
 import java.io.File;
 
 public class UserInyerface {
-    private StringUtils utility = new StringUtils();
-    private final String nicknameAndPassword = utility.textGeneration(15);
-    private final String domainName = "mail";
-    private final int hobbiesCount = 3;
-    private final String timerCountdown = "00:00:00";
+    private final String nicknameAndPassword = StringUtils.textGeneration(Integer.parseInt(PropertiesRead.readFromDataConfig("passwordLength")));
+    private final String domainName = PropertiesRead.readFromDataConfig("domainName");
+    private final int hobbiesCount = Integer.parseInt(PropertiesRead.readFromDataConfig("hobbiesCount"));
+    private final String timerCountdown = PropertiesRead.readFromDataConfig("timerCountdown");
     private static final String PAGE = PropertiesRead.readFromFrameworkConfig("page");
     private static File file = new File(PropertiesRead.readFromDataConfig("file"));
 
