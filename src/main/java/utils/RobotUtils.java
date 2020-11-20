@@ -8,7 +8,6 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class RobotUtils {
-
     public static void uploadFile(File file){
         StringSelection stringSelection = new StringSelection(file.getAbsolutePath());
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -31,5 +30,4 @@ public class RobotUtils {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
-
 }

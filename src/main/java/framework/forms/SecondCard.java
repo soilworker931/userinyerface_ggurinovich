@@ -11,7 +11,6 @@ import java.util.List;
 
 public class SecondCard extends BaseForm {
     static final Logger log = Logger.getLogger(FirstCard.class);
-    private final int requiredHobbiesQuantity = 3;
     private final Button browseAvatarButton = new Button(By.className("avatar-and-interests__upload-button"), "upload file");
 
     public SecondCard() {
@@ -23,7 +22,7 @@ public class SecondCard extends BaseForm {
         browseAvatarButton.click();
     }
 
-    public void chooseDifferentHobbies() {
+    public void chooseDifferentHobbies(int hobbiesCount) {
         log.info("choose hobbies");
         List<WebElement> hobbiesList = Browser.getBrowser().findElements(By.tagName("label"));
         int i = 0;
@@ -37,7 +36,7 @@ public class SecondCard extends BaseForm {
         }
         Browser.getBrowser().findElement(By.xpath(String.format("(//span[@class='checkbox__box'])[%s]", i))).click();
         hobbiesList.removeIf(x -> x.getAttribute("for").equals("interest_selectall") || x.getAttribute("for").equals("interest_unselectall"));
-        for (int j = 0; j < requiredHobbiesQuantity; j++) {
+        for (int j = 0; j < hobbiesCount; j++) {
             int randomHobby = (int) (Math.random() * hobbiesList.size());
             WebElement generatedHobby = hobbiesList.get(randomHobby);
             String xPathForHobbies = String.format("//label[@for='%s']/span", generatedHobby.getAttribute("for")) ;

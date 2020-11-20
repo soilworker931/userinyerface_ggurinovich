@@ -18,6 +18,8 @@ public class UserInyerface {
     private StringUtils utility = new StringUtils();
     private final String nicknameAndPassword = utility.textGeneration(15);
     private final String domainName = "mail";
+    private final int hobbiesCount = 3;
+    private final String timerCountdown = "00:00:00";
     private static final String PAGE = PropertiesRead.readFromFrameworkConfig("page");
     private static File file = new File(PropertiesRead.readFromDataConfig("file"));
 
@@ -43,7 +45,7 @@ public class UserInyerface {
         firstCard.moveToTheSecondCard();
         SecondCard secondCard = new SecondCard();
         Assert.assertTrue(secondCard.pageIsDisplayed());
-        secondCard.chooseDifferentHobbies();
+        secondCard.chooseDifferentHobbies(hobbiesCount);
         secondCard.browseAvatarButton();
         RobotUtils.uploadFile(file);
     }
@@ -74,7 +76,7 @@ public class UserInyerface {
         Assert.assertTrue(firstPage.pageIsDisplayed(), "incorrect page was displayed");
         firstPage.clickHereButton();
         FirstCard firstCard = new FirstCard();
-        Assert.assertTrue(firstCard.timerShowsCorrectValue("00:00:00"), "incorrect timer starting value is displayed");
+        Assert.assertTrue(firstCard.timerShowsCorrectValue(timerCountdown), "incorrect timer starting value is displayed");
     }
 
     @AfterMethod
